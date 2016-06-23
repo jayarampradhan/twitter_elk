@@ -1,0 +1,46 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# All Vagrant configuration is done below. The "2" in Vagrant.configure
+# configures the configuration version (we support older styles for
+# backwards compatibility). Please don't change it unless you know what
+# you're doing.
+Vagrant.configure(2) do |config|
+
+  config.vm.provision "shell", inline: "echo Hello"
+  # The most common configuration options are documented and commented below.
+  # For a complete reference, please see the online documentation at
+  # https://docs.vagrantup.com.
+  config.vm.define "uim_twitter_docker_dev", primary: true, autostart: true do |uim_twitter_docker_dev|
+    uim_twitter_docker_dev.vm.box = "boxcutter/centos71"
+    uim_twitter_docker_dev.vm.synced_folder "~/git/twiter_elk/", "/develop"
+    uim_twitter_docker_dev.vm.synced_folder ".", "/vagrant", disabled: true
+    uim_twitter_docker_dev.vm.network "private_network", type: "dhcp"
+    uim_twitter_docker_dev.vm.provision "shell", path: "install-devtools/install-devtools.sh"
+    uim_twitter_docker_dev.vm.provision "shell", path: "install-dockertools/install-dockertools.sh"
+    uim_twitter_docker_dev.vm.provision "docker"
+    uim_twitter_docker_dev.vm.provision :docker_compose, yml: ["/develop/docker/docker-compose.yml"], rebuild: true, project_name: "twitter", run: "always"
+    # Create a forwarded port mapping which allows access to a specific port
+    # within the machine from a port on the host machine. In the example below,
+    # accessing "localhost:8080" will access port 80 on the guest machine.
+    # config.vm.network "forwarded_port", guest: 80, host: 8080
+    uim_twitter_docker_dev.vm.network "forwarded_port", guest: 80, host: 8083
+    uim_twitter_docker_dev.vm.provider "virtualbox" do |vb|
+      # Display the VirtualBox GUI when booting the machine
+      vb.gui = false
+      # Customize the amount of memory on the VM:
+      vb.memory = "2048"
+      vb.name = "UIM_DOCKER_ELK_MINT_USER"
+      vb.cpus = 4
+    end
+    #
+    # Enable provisioning with a shell script. Additional provisioners such as
+    # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
+    # documentation for more information about their specific syntax and use.
+     uim_twitter_docker_dev.vm.provision "shell", inline: <<-SHELL
+       echo "Hello Uimirror Docker ELK POC user"
+     SHELL
+
+  end
+
+end
