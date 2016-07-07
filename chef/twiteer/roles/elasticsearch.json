@@ -1,0 +1,13 @@
+{
+  "name": "elasticsearch",
+  "default_attributes": {
+  },
+  "json_class": "Chef::Role",
+  "env_run_lists": {
+    "dev": [ "recipe[twiteer::elasticsearch]" ]
+  },
+  "description": "The Elastic Search Installation role",
+  "chef_type": "role",
+  "override_attributes": {
+  }
+}

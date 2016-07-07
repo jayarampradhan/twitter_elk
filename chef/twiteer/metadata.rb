@@ -1,0 +1,10 @@
+name             'twiteer'
+maintainer       'Jayaram Pradhan'
+maintainer_email 'jayaram_pradhan@intuit.com'
+license          'Intuit'
+description      'Installs/Configures Twitter feed analysis'
+version          '1.0.0'
+
+depends 'nginx'
+depends 'line'
+depends 'htpasswd'

@@ -1,0 +1,13 @@
+{
+  "name": "webserver",
+  "default_attributes": {
+  },
+  "json_class": "Chef::Role",
+  "env_run_lists": {
+    "dev": [ "recipe[twiteer::webserver]" ]
+  },
+  "description": "The web server role",
+  "chef_type": "role",
+  "override_attributes": {
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "java",
+  "default_attributes": {
+  },
+  "json_class": "Chef::Role",
+  "env_run_lists": {
+    "dev": [ "recipe[twiteer::java]" ]
+  },
+  "description": "The Java role",
+  "chef_type": "role",
+  "override_attributes": {
+  }
+}

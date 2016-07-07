@@ -1,0 +1,23 @@
+{
+  "name": "dev",
+  "default_attributes": {
+    "java":{
+      "name":"java-1.8.0-openjdk-devel",
+      "version":"1.8.0.91-1.b14.el7_2"
+    },
+    "nginx":{
+      "app_backend":[
+        "127.0.0.1:8181"
+      ],
+      "app_ssl":false,
+      "app_port" : 80,
+      "app_domain" : "127.0.0.1 localhost"
+    } 
+  },
+  "json_class": "Chef::Environment",
+  "description": "This has all essential configuration/environment for the Local mode",
+  "cookbook_versions": {
+    "nginx": "~> 2.7.6"
+  },
+  "chef_type": "environment"
+}

@@ -1,0 +1,14 @@
+{
+  "name": "dev-node",
+  "chef_environment": "dev",
+  "normal": {
+    "tags": [
+
+    ]
+  },
+  "run_list": [
+    "role[java]",
+    "role[webserver]",
+    "role[elasticsearch]"
+  ]
+}

@@ -1,0 +1,9 @@
+source "https://supermarket.chef.io"
+
+metadata
+
+cookbook 'yum-epel', '= 0.6.6'
+cookbook 'yum', '= 3.10.0'
+cookbook 'line', '= 0.6.3'
+cookbook "nginx", "= 2.7.6"
+cookbook 'htpasswd', '= 0.2.4'

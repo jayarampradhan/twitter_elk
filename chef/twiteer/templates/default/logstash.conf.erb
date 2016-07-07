@@ -1,0 +1,19 @@
+input {
+    twitter {
+        # add your data
+        consumer_key => "xxx"
+        consumer_secret => "xxx"
+        oauth_token => "xxx"
+        oauth_token_secret => "xxx"
+        keywords => ["mint"]
+        tags => ["mint"]
+        full_tweet => true
+    }
+}
+output {
+    elasticsearch {
+        hosts => ["localhost:9200"]
+        index => "twitter"
+        document_type => "twitt_feed"
+    }
+}
